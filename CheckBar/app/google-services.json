@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "477832309573",
+    "project_id": "checkbar-cf9aa",
+    "storage_bucket": "checkbar-cf9aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477832309573:android:47e2bcb8d71f822b16ac2c",
+        "android_client_info": {
+          "package_name": "com.jjmf.android.checkbar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJBNlicH5m74OXpsoQz4KaOvAu17exq_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
