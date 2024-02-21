@@ -34,6 +34,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.jjmf.android.checkbar.R
+import com.jjmf.android.checkbar.app.BaseApp.Companion.prefs
 import com.jjmf.android.checkbar.ui.components.CardMenu
 import com.jjmf.android.checkbar.ui.components.TopBar
 import com.jjmf.android.checkbar.ui.navigation.Rutas
@@ -161,6 +162,7 @@ fun alertLogout(context: Context, logout: () -> Unit) {
         contentText = "Se cerrará la sesión actual"
         setConfirmButton("Salir") {
             it.dismissWithAnimation()
+            prefs.deleteIDUser()
             logout()
         }
         setCancelButton("Cancelar") {

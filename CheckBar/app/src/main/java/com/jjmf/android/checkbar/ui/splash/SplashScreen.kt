@@ -61,7 +61,7 @@ fun SplashScreen(
     LaunchedEffect(key1 = Unit) {
         repeat(100) {
             targetValue++
-            delay(8)
+            delay(2)
         }
 
         if (viewModel.isSesionActiva) {
