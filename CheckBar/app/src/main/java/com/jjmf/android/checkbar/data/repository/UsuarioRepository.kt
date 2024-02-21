@@ -12,6 +12,6 @@ interface UsuarioRepository {
     suspend fun getAllFlow(): Flow<EResult<List<Usuario>>>
     suspend fun addUsuario(usuarioDto: UsuarioDto): EResult<String>
     suspend fun ifExist(field: String, valor: Any?) : Boolean
-    suspend fun get(id: String): Usuario?
+    suspend fun get(id: String?): Usuario?
     suspend fun delete(id: String) : EResult<String>
 }

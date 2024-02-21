@@ -84,9 +84,9 @@ class UsuarioRepositoryImpl @Inject constructor(
         return !querySnapshot.isEmpty
     }
 
-    override suspend fun get(id: String): Usuario? {
+    override suspend fun get(id: String?): Usuario? {
         return try {
-            val res = fb.document(id).get().await()
+            val res = fb.document(id.toString()).get().await()
             val usuarioDto = res.toObject(UsuarioDto::class.java)
             usuarioDto?.id = res.id
             usuarioDto?.toDomain()

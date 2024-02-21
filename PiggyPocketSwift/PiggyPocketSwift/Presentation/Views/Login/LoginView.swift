@@ -46,8 +46,9 @@ struct LoginView: View {
                 Divider()
             }
             
-            Button {
-                
+            NavigationLink {
+                MenuView()
+                    .navigationBarBackButtonHidden()
             } label: {
                 Text("Ingresar")
                     .bold()

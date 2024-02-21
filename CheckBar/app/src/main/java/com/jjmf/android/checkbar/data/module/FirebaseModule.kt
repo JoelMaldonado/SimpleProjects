@@ -32,7 +32,6 @@ class FirebaseModule{
     @Retention(AnnotationRetention.BINARY)
     annotation class InventarioCollection
 
-
     /** Colección de Usuario **/
 
     @UsuarioCollection

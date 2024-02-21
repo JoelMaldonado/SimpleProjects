@@ -15,7 +15,7 @@ class Preferencias(context: Context) {
     fun getUsuario() = storage.getString(KEY_USUARIO, "") ?: ""
 
     fun saveIdUser(valor: String) = storage.edit().putString(KEY_IDUSER, valor).apply()
-    fun getIdUser() = storage.getString(KEY_IDUSER, "") ?: ""
+    fun getIdUser() = storage.getString(KEY_IDUSER, null)
 
     fun saveRecuerdame(valor: Boolean) = storage.edit().putBoolean(KEY_RECUERDAME, valor).apply()
     fun getRecuerdame() = storage.getBoolean(KEY_RECUERDAME, false)

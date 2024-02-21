@@ -1,11 +1,17 @@
 package com.jjmf.android.checkbar.ui.components
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.NavigateNext
+import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.Text
@@ -20,13 +26,12 @@ import com.jjmf.android.checkbar.ui.theme.ColorP4
 @Composable
 fun ItemInventario(
     inv: Inventario,
-    click:() -> Unit
+    edit: () -> Unit,
+    toDetalle: () -> Unit,
 ) {
     ListItem(
         modifier = Modifier
-            .fillMaxWidth().clickable {
-                                      click()
-            },
+            .fillMaxWidth(),
         leadingContent = {
             ImagenUsuario(
                 modifier = Modifier.size(50.dp),
@@ -38,10 +43,21 @@ fun ItemInventario(
             Text(text = inv.nombre)
         },
         supportingContent = {
-            Text(text = "Cantidad: ${inv.cant}")
+            Text(text = "Cantidad: ${inv.getTotal()}")
+
         },
         colors = ListItemDefaults.colors(
             containerColor = Color.Transparent
-        )
+        ),
+        trailingContent = {
+            Row {
+                IconButton(onClick = edit) {
+                    Icon(imageVector = Icons.Default.Edit, contentDescription = null)
+                }
+                IconButton(onClick = toDetalle) {
+                    Icon(imageVector = Icons.Default.Visibility, contentDescription = null)
+                }
+            }
+        }
     )
 }

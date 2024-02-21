@@ -1,5 +1,6 @@
 package com.jjmf.android.checkbar.ui.Features.Menu
 
+import android.app.Activity
 import android.content.Context
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
@@ -36,6 +37,7 @@ import com.jjmf.android.checkbar.R
 import com.jjmf.android.checkbar.ui.components.CardMenu
 import com.jjmf.android.checkbar.ui.components.TopBar
 import com.jjmf.android.checkbar.ui.navigation.Rutas
+import com.jjmf.android.checkbar.ui.theme.ColorP1
 
 @Composable
 fun MenuScreen(
@@ -149,6 +151,8 @@ fun MenuScreen(
         }
     }
 
+    val act = LocalContext.current as Activity
+    act.window.statusBarColor = ColorP1.hashCode()
 }
 
 fun alertLogout(context: Context, logout: () -> Unit) {

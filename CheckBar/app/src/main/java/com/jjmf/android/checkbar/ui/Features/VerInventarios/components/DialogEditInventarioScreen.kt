@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,10 +12,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.material.icons.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.FilledIconToggleButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
@@ -25,11 +30,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.google.firebase.Timestamp
 import com.jjmf.android.checkbar.data.dto.InventarioDto
+import com.jjmf.android.checkbar.data.dto.MovimientoDto
+import com.jjmf.android.checkbar.data.dto.TipoMovimiento
 import com.jjmf.android.checkbar.domain.model.Inventario
+import com.jjmf.android.checkbar.ui.Features.VerInventarios.VerInventariosViewModel
 import com.jjmf.android.checkbar.ui.components.CajaTexto2
 import com.jjmf.android.checkbar.ui.theme.ColorP1
 
@@ -37,12 +48,12 @@ import com.jjmf.android.checkbar.ui.theme.ColorP1
 fun DialogEditInventarioScreen(
     inv: Inventario,
     close: () -> Unit,
-    save:(InventarioDto) -> Unit,
-    loader:Boolean
+    save: (MovimientoDto) -> Unit,
+    loader: Boolean
 ) {
 
-    val valor = remember { mutableStateOf(inv.nombre) }
-    val cant = remember { mutableIntStateOf(inv.cant) }
+    val cant = remember { mutableIntStateOf(0) }
+    val tipo = remember { mutableStateOf(TipoMovimiento.Salida) }
 
     Dialog(onDismissRequest = close) {
         Column(
@@ -54,81 +65,76 @@ fun DialogEditInventarioScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Spacer(modifier = Modifier.weight(1f))
+                RadioButton(
+                    selected = tipo.value == TipoMovimiento.Salida,
+                    onClick = {
+                        tipo.value = TipoMovimiento.Salida
+                    }
+                )
+                Text(text = "Salida")
+                Spacer(modifier = Modifier.weight(1f))
+                RadioButton(
+                    selected = tipo.value == TipoMovimiento.Ingreso,
+                    onClick = {
+                        tipo.value = TipoMovimiento.Ingreso
+                    }
+                )
+                Text(text = "Ingreso")
+                Spacer(modifier = Modifier.weight(1f))
+            }
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                Icon(imageVector = Icons.Default.Edit, contentDescription = null, tint = ColorP1)
-                Text(
-                    text = "Editar",
-                    color = ColorP1,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.SemiBold
-                )
-            }
 
-            CajaTexto2(
-                valor = valor.value,
-                newValor = { valor.value = it },
-                label = "Nombre",
-                placeholder = "Ingresa nombre del inventario",
-            )
-
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                Text(text = "Cantidad", fontWeight = FontWeight.Medium, color = ColorP1)
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceEvenly
+                IconButton(
+                    onClick = {
+                        if (cant.intValue > 0) {
+                            cant.intValue--
+                        }
+                    }
                 ) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBackIos,
+                        contentDescription = null,
+                        tint = ColorP1
+                    )
+                }
 
-                    IconButton(
-                        onClick = {
-                            if (cant.intValue > 0) {
-                                cant.intValue--
-                            }
-                        }
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowBackIos,
-                            contentDescription = null,
-                            tint = ColorP1
-                        )
+                Text(text = cant.intValue.toString())
+
+                IconButton(
+                    onClick = {
+                        cant.intValue++
                     }
-
-                    Text(text = cant.intValue.toString())
-
-                    IconButton(
-                        onClick = {
-                            cant.intValue++
-                        }
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowForwardIos,
-                            contentDescription = null,
-                            tint = ColorP1
-                        )
-                    }
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowForwardIos,
+                        contentDescription = null,
+                        tint = ColorP1
+                    )
                 }
             }
 
-            if (loader){
+            if (loader) {
                 CircularProgressIndicator()
-            }else{
+            } else {
                 Button(
                     onClick = {
-                        val invDto = InventarioDto(
-                            id = inv.id,
-                            nombre = valor.value,
+                        val movimientoDto = MovimientoDto(
                             cant = cant.intValue,
-                            foto = inv.foto
+                            tipo = tipo.value,
+                            fecha = Timestamp.now()
                         )
-                        save(invDto)
+                        save(movimientoDto)
                     }
                 ) {
                     Text(text = "Guardar")

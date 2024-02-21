@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "factura.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

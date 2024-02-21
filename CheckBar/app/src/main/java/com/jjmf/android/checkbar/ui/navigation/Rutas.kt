@@ -11,6 +11,9 @@ sealed class Rutas(val url: String) {
     object Preferencias : Rutas("preferencias")
     object VerInventarios : Rutas("verinventarios")
     object AddInventario : Rutas("addinventario")
+    object DetalleInventario : Rutas("detail_inventario?{id}"){
+        fun sendId(id:String) = "detail_inventario?${id}"
+    }
     object VerUsuarios : Rutas("verusuarios")
     object AddUsuario : Rutas("addusuario?{id}") {
         fun sendId(id: String?) = "addusuario?$id"

@@ -12,6 +12,18 @@
 		5D4219452B6C3FF30025BCD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D4219442B6C3FF30025BCD9 /* Assets.xcassets */; };
 		5D4219492B6C3FF30025BCD9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D4219482B6C3FF30025BCD9 /* Preview Assets.xcassets */; };
 		5D4219532B6C41950025BCD9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4219522B6C41950025BCD9 /* LoginView.swift */; };
+		5D5328942B769D8B0046ABD5 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5328932B769D8B0046ABD5 /* MenuView.swift */; };
+		5D5328982B76A0000046ABD5 /* InicioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5328972B76A0000046ABD5 /* InicioView.swift */; };
+		5D53289A2B76A0470046ABD5 /* AddTransaccionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5328992B76A0470046ABD5 /* AddTransaccionView.swift */; };
+		5D53289C2B76A2490046ABD5 /* AddTransaccionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D53289B2B76A2490046ABD5 /* AddTransaccionViewModel.swift */; };
+		5D53289F2B7AE0A10046ABD5 /* AddCategoriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D53289E2B7AE0A10046ABD5 /* AddCategoriaView.swift */; };
+		5D5328A12B7AE11C0046ABD5 /* AddCategoriaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5328A02B7AE11C0046ABD5 /* AddCategoriaViewModel.swift */; };
+		5D5328A42B7AED000046ABD5 /* SelectColorSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5328A32B7AED000046ABD5 /* SelectColorSheet.swift */; };
+		5D5328A72B7BDA9F0046ABD5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5328A62B7BDA9F0046ABD5 /* Extensions.swift */; };
+		5D5328A92B7BF0CB0046ABD5 /* SelectIconSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5328A82B7BF0CA0046ABD5 /* SelectIconSheet.swift */; };
+		5D5328AC2B7BFFF90046ABD5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5D5328AB2B7BFFF90046ABD5 /* Alamofire */; };
+		5D5328B02B7C1ECC0046ABD5 /* CategoriasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5328AF2B7C1ECC0046ABD5 /* CategoriasView.swift */; };
+		5D5328B22B7C1EDB0046ABD5 /* CuentasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5328B12B7C1EDB0046ABD5 /* CuentasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +34,17 @@
 		5D4219462B6C3FF30025BCD9 /* PiggyPocketSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PiggyPocketSwift.entitlements; sourceTree = "<group>"; };
 		5D4219482B6C3FF30025BCD9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5D4219522B6C41950025BCD9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		5D5328932B769D8B0046ABD5 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		5D5328972B76A0000046ABD5 /* InicioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioView.swift; sourceTree = "<group>"; };
+		5D5328992B76A0470046ABD5 /* AddTransaccionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransaccionView.swift; sourceTree = "<group>"; };
+		5D53289B2B76A2490046ABD5 /* AddTransaccionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransaccionViewModel.swift; sourceTree = "<group>"; };
+		5D53289E2B7AE0A10046ABD5 /* AddCategoriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoriaView.swift; sourceTree = "<group>"; };
+		5D5328A02B7AE11C0046ABD5 /* AddCategoriaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoriaViewModel.swift; sourceTree = "<group>"; };
+		5D5328A32B7AED000046ABD5 /* SelectColorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorSheet.swift; sourceTree = "<group>"; };
+		5D5328A62B7BDA9F0046ABD5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5D5328A82B7BF0CA0046ABD5 /* SelectIconSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIconSheet.swift; sourceTree = "<group>"; };
+		5D5328AF2B7C1ECC0046ABD5 /* CategoriasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriasView.swift; sourceTree = "<group>"; };
+		5D5328B12B7C1EDB0046ABD5 /* CuentasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuentasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D5328AC2B7BFFF90046ABD5 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +78,7 @@
 		5D42193F2B6C3FF10025BCD9 /* PiggyPocketSwift */ = {
 			isa = PBXGroup;
 			children = (
+				5D5328A52B7BD9D50046ABD5 /* Util */,
 				5D42194F2B6C417A0025BCD9 /* Presentation */,
 				5D4219402B6C3FF10025BCD9 /* PiggyPocketSwiftApp.swift */,
 				5D4219422B6C3FF10025BCD9 /* ContentView.swift */,
@@ -83,6 +108,11 @@
 		5D4219502B6C41800025BCD9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5D5328AE2B7C1EB60046ABD5 /* Cuentas */,
+				5D5328AD2B7C1EAF0046ABD5 /* Categorias */,
+				5D5328A22B7AECF30046ABD5 /* Sheets */,
+				5D53289D2B7AE0950046ABD5 /* AddCategoria */,
+				5D5328922B769D820046ABD5 /* Menu */,
 				5D4219512B6C418B0025BCD9 /* Login */,
 			);
 			path = Views;
@@ -94,6 +124,75 @@
 				5D4219522B6C41950025BCD9 /* LoginView.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		5D5328922B769D820046ABD5 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				5D5328962B769FE70046ABD5 /* AddTransaccion */,
+				5D5328952B769F780046ABD5 /* Inicio */,
+				5D5328932B769D8B0046ABD5 /* MenuView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		5D5328952B769F780046ABD5 /* Inicio */ = {
+			isa = PBXGroup;
+			children = (
+				5D5328972B76A0000046ABD5 /* InicioView.swift */,
+			);
+			path = Inicio;
+			sourceTree = "<group>";
+		};
+		5D5328962B769FE70046ABD5 /* AddTransaccion */ = {
+			isa = PBXGroup;
+			children = (
+				5D5328992B76A0470046ABD5 /* AddTransaccionView.swift */,
+				5D53289B2B76A2490046ABD5 /* AddTransaccionViewModel.swift */,
+			);
+			path = AddTransaccion;
+			sourceTree = "<group>";
+		};
+		5D53289D2B7AE0950046ABD5 /* AddCategoria */ = {
+			isa = PBXGroup;
+			children = (
+				5D53289E2B7AE0A10046ABD5 /* AddCategoriaView.swift */,
+				5D5328A02B7AE11C0046ABD5 /* AddCategoriaViewModel.swift */,
+			);
+			path = AddCategoria;
+			sourceTree = "<group>";
+		};
+		5D5328A22B7AECF30046ABD5 /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				5D5328A32B7AED000046ABD5 /* SelectColorSheet.swift */,
+				5D5328A82B7BF0CA0046ABD5 /* SelectIconSheet.swift */,
+			);
+			path = Sheets;
+			sourceTree = "<group>";
+		};
+		5D5328A52B7BD9D50046ABD5 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5D5328A62B7BDA9F0046ABD5 /* Extensions.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		5D5328AD2B7C1EAF0046ABD5 /* Categorias */ = {
+			isa = PBXGroup;
+			children = (
+				5D5328AF2B7C1ECC0046ABD5 /* CategoriasView.swift */,
+			);
+			path = Categorias;
+			sourceTree = "<group>";
+		};
+		5D5328AE2B7C1EB60046ABD5 /* Cuentas */ = {
+			isa = PBXGroup;
+			children = (
+				5D5328B12B7C1EDB0046ABD5 /* CuentasView.swift */,
+			);
+			path = Cuentas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +211,9 @@
 			dependencies = (
 			);
 			name = PiggyPocketSwift;
+			packageProductDependencies = (
+				5D5328AB2B7BFFF90046ABD5 /* Alamofire */,
+			);
 			productName = PiggyPocketSwift;
 			productReference = 5D42193D2B6C3FF10025BCD9 /* PiggyPocketSwift.app */;
 			productType = "com.apple.product-type.application";
@@ -140,6 +242,9 @@
 				"es-419",
 			);
 			mainGroup = 5D4219342B6C3FF00025BCD9;
+			packageReferences = (
+				5D5328AA2B7BFFF90046ABD5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 5D42193E2B6C3FF10025BCD9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -166,8 +271,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D5328B22B7C1EDB0046ABD5 /* CuentasView.swift in Sources */,
+				5D5328982B76A0000046ABD5 /* InicioView.swift in Sources */,
 				5D4219532B6C41950025BCD9 /* LoginView.swift in Sources */,
+				5D5328A92B7BF0CB0046ABD5 /* SelectIconSheet.swift in Sources */,
+				5D5328942B769D8B0046ABD5 /* MenuView.swift in Sources */,
+				5D53289A2B76A0470046ABD5 /* AddTransaccionView.swift in Sources */,
+				5D53289F2B7AE0A10046ABD5 /* AddCategoriaView.swift in Sources */,
+				5D5328B02B7C1ECC0046ABD5 /* CategoriasView.swift in Sources */,
+				5D5328A42B7AED000046ABD5 /* SelectColorSheet.swift in Sources */,
 				5D4219432B6C3FF10025BCD9 /* ContentView.swift in Sources */,
+				5D53289C2B76A2490046ABD5 /* AddTransaccionViewModel.swift in Sources */,
+				5D5328A12B7AE11C0046ABD5 /* AddCategoriaViewModel.swift in Sources */,
+				5D5328A72B7BDA9F0046ABD5 /* Extensions.swift in Sources */,
 				5D4219412B6C3FF10025BCD9 /* PiggyPocketSwiftApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +419,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Piggy;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -342,6 +459,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Piggy;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -389,6 +507,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D5328AA2B7BFFF90046ABD5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D5328AB2B7BFFF90046ABD5 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D5328AA2B7BFFF90046ABD5 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5D4219352B6C3FF00025BCD9 /* Project object */;
 }

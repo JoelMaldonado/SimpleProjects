@@ -6,8 +6,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.Timestamp
 import com.jjmf.android.checkbar.Core.EResult
 import com.jjmf.android.checkbar.data.dto.InventarioDto
+import com.jjmf.android.checkbar.data.dto.MovimientoDto
+import com.jjmf.android.checkbar.data.dto.TipoMovimiento
 import com.jjmf.android.checkbar.data.repository.InventarioRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +37,13 @@ class AddInventarioViewModel @Inject constructor(
                 val inventario = InventarioDto(
                     foto = foto.toString(),
                     nombre = detalle,
-                    cant = cant.toInt()
+                    movimientos = listOf(
+                        MovimientoDto(
+                            cant = cant.toIntOrNull(),
+                            tipo = TipoMovimiento.Ingreso,
+                            fecha = Timestamp.now()
+                        )
+                    )
                 )
                 when (val res = repository.insert(inventario)) {
                     is EResult.Success -> back = true

@@ -7,7 +7,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -26,6 +25,7 @@ import com.jjmf.android.checkbar.util.show
 fun VerInventariosScreen(
     back: () -> Unit,
     addInventario: () -> Unit,
+    toDetalle: (id: String) -> Unit,
     viewModel: VerInventariosViewModel = hiltViewModel(),
 ) {
 
@@ -46,8 +46,8 @@ fun VerInventariosScreen(
             close = {
                 viewModel.dialogEditInventario = null
             },
-            save = {
-                viewModel.editInventario(it)
+            save = { mov ->
+                viewModel.editInventario(it.id, mov)
             },
             loader = viewModel.loaderAlert
         )
@@ -89,11 +89,14 @@ fun VerInventariosScreen(
                     Text(text = "No hay inventarios")
                 }
             }
-            items(viewModel.listInventario) { inventario ->
+            items(viewModel.listInventario.sortedByDescending { it.fecha }) { inventario ->
                 ItemInventario(
                     inv = inventario,
-                    click = {
+                    edit = {
                         viewModel.dialogEditInventario = inventario
+                    },
+                    toDetalle = {
+                        toDetalle(inventario.id)
                     }
                 )
             }
