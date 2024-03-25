@@ -7,7 +7,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jjmf.android.checkbar.Core.EResult
 import com.jjmf.android.checkbar.data.dto.MovimientoDto
+import com.jjmf.android.checkbar.data.repository.AreaRepository
+import com.jjmf.android.checkbar.data.repository.CategoriaRepository
 import com.jjmf.android.checkbar.data.repository.InventarioRepository
+import com.jjmf.android.checkbar.domain.model.Area
+import com.jjmf.android.checkbar.domain.model.Categoria
 import com.jjmf.android.checkbar.domain.model.Inventario
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -16,14 +20,22 @@ import javax.inject.Inject
 
 @HiltViewModel
 class VerInventariosViewModel @Inject constructor(
-    private val repository: InventarioRepository
+    private val repository: InventarioRepository,
+    private val areaRepository: AreaRepository,
+    private val categoriaRepository: CategoriaRepository
 ) : ViewModel() {
 
 
+    var buscador by mutableStateOf("")
     var dialogEditInventario by mutableStateOf<Inventario?>(null)
     var loader by mutableStateOf(false)
     var error by mutableStateOf<String?>(null)
     var listInventario by mutableStateOf<List<Inventario>>(emptyList())
+    var listCategorias by mutableStateOf<List<Categoria>>(emptyList())
+    var listAreas by mutableStateOf<List<Area>>(emptyList())
+
+    var area by mutableStateOf<String?>(null)
+    var categoria by mutableStateOf<String?>(null)
 
     fun getListInventario() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -47,6 +59,30 @@ class VerInventariosViewModel @Inject constructor(
             }
         }
     }
+
+    fun getCategorias() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val res = categoriaRepository.getAll()
+                when (res) {
+                    is EResult.Error -> error = res.mensajeError
+                    is EResult.Success -> listCategorias = res.data
+                }
+            } catch (e: Exception) {
+                error = e.message
+            }
+        }
+    }
+    fun getAreas() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                listAreas = areaRepository.getAll()
+            } catch (e: Exception) {
+                error = e.message
+            }
+        }
+    }
+
 
     var loaderAlert by mutableStateOf(false)
 

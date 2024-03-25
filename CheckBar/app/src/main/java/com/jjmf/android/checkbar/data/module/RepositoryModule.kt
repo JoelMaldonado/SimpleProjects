@@ -1,9 +1,11 @@
 package com.jjmf.android.checkbar.data.module
 
 import com.jjmf.android.checkbar.data.repository.AreaRepository
+import com.jjmf.android.checkbar.data.repository.CategoriaRepository
 import com.jjmf.android.checkbar.data.repository.InventarioRepository
 import com.jjmf.android.checkbar.data.repository.UsuarioRepository
 import com.jjmf.android.checkbar.domain.repository.AreaRepositoryImpl
+import com.jjmf.android.checkbar.domain.repository.CategoriaRepositoryImpl
 import com.jjmf.android.checkbar.domain.repository.InventarioRepositoryImpl
 import com.jjmf.android.checkbar.domain.repository.UsuarioRepositoryImpl
 import dagger.Binds
@@ -23,5 +25,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindAreaRepository(impl: AreaRepositoryImpl): AreaRepository
+    @Binds
+    abstract fun bindCategoriaRepository(impl: CategoriaRepositoryImpl): CategoriaRepository
 
 }

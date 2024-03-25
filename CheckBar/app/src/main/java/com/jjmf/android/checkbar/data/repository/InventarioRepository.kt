@@ -14,5 +14,6 @@ interface InventarioRepository {
     suspend fun update(inv: InventarioDto) : EResult<String>
     suspend fun insertMov(id:String, mov: MovimientoDto): Result<Boolean>
     suspend fun get(id: String) : Result<Inventario>
+    suspend fun delete(id: String) : EResult<String>
 
 }

@@ -13,23 +13,30 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Image
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -37,14 +44,19 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.PopupProperties
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
+import com.jjmf.android.checkbar.ui.Features.AddInventario.components.AlertAddArea
+import com.jjmf.android.checkbar.ui.Features.AddInventario.components.AlertAddCategoria
 import com.jjmf.android.checkbar.ui.components.CajaTexto2
 import com.jjmf.android.checkbar.ui.components.ImagenUsuario
 import com.jjmf.android.checkbar.ui.components.TopBar
+import com.jjmf.android.checkbar.ui.theme.ColorP1
 
-@OptIn(ExperimentalPermissionsApi::class)
+@OptIn(ExperimentalPermissionsApi::class, ExperimentalComposeUiApi::class)
 @Composable
 fun AddInventarioScreen(
     id: String? = null,
@@ -52,6 +64,13 @@ fun AddInventarioScreen(
     viewModel: AddInventarioViewModel = hiltViewModel(),
 ) {
 
+    LaunchedEffect(key1 = Unit) {
+        viewModel.getCategorias()
+        viewModel.getAreas()
+    }
+
+    val isExpanded = remember { mutableStateOf(false) }
+    val isExpanded2 = remember { mutableStateOf(false) }
 
     val context = LocalContext.current
 
@@ -85,6 +104,14 @@ fun AddInventarioScreen(
             }
         }
     )
+
+    if (viewModel.alertAddCategoria) {
+        AlertAddCategoria()
+    }
+
+    if (viewModel.alertAddArea){
+        AlertAddArea()
+    }
 
     TopBar(
         leading = {
@@ -168,6 +195,126 @@ fun AddInventarioScreen(
                 placeholder = "Ingresar cantidad",
                 keyboardType = KeyboardType.Number
             )
+
+            Column(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = "Categoria", fontWeight = FontWeight.Medium, color = ColorP1)
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp)
+                        .padding(top = 8.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(Color.LightGray.copy(0.2f))
+                        .clickable { isExpanded.value = !isExpanded.value }
+                        .padding(horizontal = 10.dp)
+                ) {
+
+                    Text(
+                        text = viewModel.categoria.ifEmpty { "Seleccionar Categoria" },
+                        modifier = Modifier.align(Alignment.CenterStart),
+                        fontSize = 14.sp
+                    )
+
+                    Icon(
+                        imageVector = Icons.Default.ArrowDropDown,
+                        contentDescription = null,
+                        modifier = Modifier.align(Alignment.CenterEnd)
+                    )
+                }
+
+                DropdownMenu(
+                    modifier = Modifier.fillMaxWidth(),
+                    expanded = isExpanded.value,
+                    onDismissRequest = { isExpanded.value = false },
+                    properties = PopupProperties(
+                        usePlatformDefaultWidth = true
+                    )
+                ) {
+                    DropdownMenuItem(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = { Text(text = "Agregar Nuevo") },
+                        onClick = {
+                            viewModel.alertAddCategoria = true
+                            isExpanded.value = false
+                        },
+                        trailingIcon = {
+                            Icon(imageVector = Icons.Default.Add, contentDescription = null)
+                        }
+                    )
+                    viewModel.listCategorias.forEach {
+                        DropdownMenuItem(
+                            text = { Text(text = it.nombre) },
+                            onClick = {
+                                isExpanded.value = false
+                                viewModel.categoria = it.nombre
+                            }
+                        )
+                    }
+                }
+            }
+
+            Column(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = "Area", fontWeight = FontWeight.Medium, color = ColorP1)
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp)
+                        .padding(top = 8.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(Color.LightGray.copy(0.2f))
+                        .clickable { isExpanded2.value = !isExpanded2.value }
+                        .padding(horizontal = 10.dp)
+                ) {
+
+                    Text(
+                        text = viewModel.area.ifEmpty { "Seleccionar Area" },
+                        modifier = Modifier.align(Alignment.CenterStart),
+                        fontSize = 14.sp
+                    )
+
+                    Icon(
+                        imageVector = Icons.Default.ArrowDropDown,
+                        contentDescription = null,
+                        modifier = Modifier.align(Alignment.CenterEnd)
+                    )
+                }
+
+                DropdownMenu(
+                    modifier = Modifier.fillMaxWidth(),
+                    expanded = isExpanded2.value,
+                    onDismissRequest = { isExpanded2.value = false },
+                    properties = PopupProperties(
+                        usePlatformDefaultWidth = true
+                    )
+                ) {
+                    DropdownMenuItem(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = { Text(text = "Agregar Nuevo") },
+                        onClick = {
+                            viewModel.alertAddArea = true
+                            isExpanded2.value = false
+                        },
+                        trailingIcon = {
+                            Icon(imageVector = Icons.Default.Add, contentDescription = null)
+                        }
+                    )
+                    viewModel.listAreas.forEach {
+                        DropdownMenuItem(
+                            text = { Text(text = it.nombre) },
+                            onClick = {
+                                isExpanded2.value = false
+                                viewModel.area = it.nombre
+                            }
+                        )
+                    }
+                }
+            }
+
+
             if (viewModel.loader) {
                 CircularProgressIndicator()
             } else {

@@ -84,4 +84,13 @@ class InventarioRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun delete(id: String) : EResult<String> {
+        return try {
+            fb.document(id).delete().await()
+            EResult.Success("Eliminado")
+        }catch (e:Exception){
+            EResult.Error(e.message.toString())
+        }
+    }
+
 }

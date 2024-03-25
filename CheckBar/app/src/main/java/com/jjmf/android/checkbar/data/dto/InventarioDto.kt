@@ -15,7 +15,9 @@ data class InventarioDto(
     val foto: String? = null,
     val nombre: String? = null,
     var movimientos: List<MovimientoDto>? = null,
-    var fecha: Timestamp? = null
+    var fecha: Timestamp? = null,
+    var categoria: String? = null,
+    var area: String? = null
 ) {
     fun toDomain(): Inventario {
         return Inventario(
@@ -23,7 +25,9 @@ data class InventarioDto(
             foto = foto ?: "",
             nombre = nombre ?: "",
             movimientos = movimientos?.map { it.toDomain() } ?: emptyList(),
-            fecha = fecha ?: Timestamp.now()
+            fecha = fecha ?: Timestamp.now(),
+            categoria = categoria ?: "",
+            area = area ?: ""
         )
     }
 }

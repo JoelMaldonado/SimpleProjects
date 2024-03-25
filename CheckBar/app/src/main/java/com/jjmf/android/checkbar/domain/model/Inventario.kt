@@ -9,7 +9,9 @@ data class Inventario(
     val foto: String,
     val nombre: String,
     val movimientos: List<Movimiento>,
-    val fecha:Timestamp
+    val fecha:Timestamp,
+    val categoria:String,
+    val area:String
 ) {
     fun getTotal(): Int {
         val ingresos = movimientos.filter { it.tipo == TipoMovimiento.Ingreso }.sumOf { it.cant }

@@ -5,6 +5,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jjmf.android.checkbar.Core.EResult
 import com.jjmf.android.checkbar.data.repository.InventarioRepository
 import com.jjmf.android.checkbar.domain.model.Inventario
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,6 +19,7 @@ class DetalleInventarioViewModel @Inject constructor(
 ) : ViewModel() {
 
     var isLoading by mutableStateOf(false)
+    var back by mutableStateOf(false)
     var error by mutableStateOf<String?>(null)
     var inventario by mutableStateOf<Inventario?>(null)
 
@@ -33,6 +35,20 @@ class DetalleInventarioViewModel @Inject constructor(
                 error = e.message
             } finally {
                 isLoading = false
+            }
+        }
+    }
+
+    fun delete(id: String) {
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val res = repository.delete(id)
+                when(res){
+                    is EResult.Error -> error =res.mensajeError
+                    is EResult.Success -> back = true
+                }
+            }catch (e:Exception){
+                error = e.message
             }
         }
     }

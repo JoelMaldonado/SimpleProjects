@@ -54,4 +54,16 @@ class FirebaseModule{
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
     annotation class AreaCollection
+
+
+    /** Colección de Categoria **/
+
+    @CategoriaCollection
+    @Singleton
+    @Provides
+    fun provideCategoriaCollection(fb: FirebaseFirestore) = fb.collection("Categoria")
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class CategoriaCollection
 }

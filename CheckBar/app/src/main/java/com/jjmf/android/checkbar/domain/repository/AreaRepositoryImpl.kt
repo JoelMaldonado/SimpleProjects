@@ -30,12 +30,12 @@ class AreaRepositoryImpl @Inject constructor(
         return !querySnapshot.isEmpty
     }
 
-    override suspend fun add(areaDto: AreaDto) : String {
-        try {
+    override suspend fun add(areaDto: AreaDto) : EResult<Boolean> {
+        return try {
             val documentReference = fb.add(areaDto).await()
-            return documentReference.id
+            return EResult.Success(true)
         } catch (e: Exception) {
-            throw e
+            EResult.Error(e.message.toString())
         }
     }
 }
